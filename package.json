@@ -2,6 +2,19 @@
   "name": "assistant",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "b": "pnpm --filter @assistant/backend",
+    "w": "pnpm --filter @assistant/webapp",
+    "dev": "pnpm -r --parallel dev",
+    "types": "concurrently 'pnpm b types' 'pnpm w types'",
+    "prettify": "pnpm -r --parallel prettify"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
   }
 }
