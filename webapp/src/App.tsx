@@ -1,5 +1,6 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { getAllIdeasRoute, getViewIdeaRoute, viewIdeaRouteParams } from './lib/routes'
 import { TrpcProvider } from './lib/trpc'
 import { AllIdeasPage } from './pages/AllIdeasPage'
 import { ViewIdeaPage } from './pages/IdeaPage'
@@ -9,8 +10,8 @@ function App() {
     <TrpcProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/ideas" element={<AllIdeasPage />}></Route>
-          <Route path="/ideas/:ideaNick" element={<ViewIdeaPage />}></Route>
+          <Route path={getAllIdeasRoute()} element={<AllIdeasPage />}></Route>
+          <Route path={getViewIdeaRoute(viewIdeaRouteParams)} element={<ViewIdeaPage />}></Route>
         </Routes>
       </BrowserRouter>
     </TrpcProvider>
