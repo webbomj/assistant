@@ -4,6 +4,7 @@ import { getAllIdeasRoute, getViewIdeaRoute, viewIdeaRouteParams } from './lib/r
 import { TrpcProvider } from './lib/trpc'
 import { AllIdeasPage } from './pages/AllIdeasPage'
 import { ViewIdeaPage } from './pages/IdeaPage'
+import './styles/global.scss'
 
 function App() {
   return (
