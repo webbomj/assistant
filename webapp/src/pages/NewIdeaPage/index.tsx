@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Input } from '../../components/Input'
 import { Segment } from '../../components/Segment'
+import { Textarea } from '../../components/Textarea'
 
 export const NewIdeaPage = () => {
   const [state, setState] = useState({
@@ -17,60 +19,10 @@ export const NewIdeaPage = () => {
           console.info('Submitted', state)
         }}
       >
-        <div style={{ marginBottom: 10 }}>
-          <label htmlFor="name">Name</label>
-          <br />
-          <input
-            type="text"
-            onChange={(e) => {
-              setState({ ...state, name: e.target.value })
-            }}
-            value={state.name}
-            name="name"
-            id="name"
-          />
-        </div>
-
-        <div style={{ marginBottom: 10 }}>
-          <label htmlFor="nick">Nick</label>
-          <br />
-          <input
-            type="text"
-            onChange={(e) => {
-              setState({ ...state, nick: e.target.value })
-            }}
-            value={state.nick}
-            name="nick"
-            id="nick"
-          />
-        </div>
-
-        <div style={{ marginBottom: 10 }}>
-          <label htmlFor="description">Description</label>
-          <br />
-          <input
-            type="text"
-            onChange={(e) => {
-              setState({ ...state, description: e.target.value })
-            }}
-            value={state.description}
-            name="description"
-            id="description"
-          />
-        </div>
-
-        <div style={{ marginBottom: 10 }}>
-          <label htmlFor="text">Text</label>
-          <br />
-          <textarea
-            onChange={(e) => {
-              setState({ ...state, text: e.target.value })
-            }}
-            value={state.text}
-            name="text"
-            id="text"
-          />
-        </div>
+        <Input label="Name" name="name" setState={setState} state={state} />
+        <Input label="Nick" name="nick" setState={setState} state={state} />
+        <Input label="Description" name="description" setState={setState} state={state} />
+        <Textarea name="text" label="Text" setState={setState} state={state} />
 
         <button type="submit">Create Idea</button>
       </form>
