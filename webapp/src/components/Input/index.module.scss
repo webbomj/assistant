@@ -2,6 +2,10 @@
 @import '../../styles/_mixins';
 
 .field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
   &.disabled {
     opacity: 0.5;
   }
