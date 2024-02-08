@@ -2,6 +2,9 @@ import { zCreateIdeaTrpcInput } from '@assistant/backend/src/router/createIdea/i
 import { useFormik } from 'formik'
 import { withZodSchema } from 'formik-validator-zod'
 import { useState } from 'react'
+import { Alert } from '../../components/Alert'
+import { Button } from '../../components/Button'
+import { FormItems } from '../../components/FormItems'
 import { Input } from '../../components/Input'
 import { Segment } from '../../components/Segment'
 import { Textarea } from '../../components/Textarea'
@@ -44,16 +47,16 @@ export const NewIdeaPage = () => {
           formik.handleSubmit()
         }}
       >
-        <Input label="Name" name="name" formik={formik} />
-        <Input label="Nick" name="nick" formik={formik} />
-        <Input label="Description" name="description" formik={formik} maxWidth={500} />
-        <Textarea name="text" label="Text" formik={formik} />
-        {!formik.isValid && !!formik.submitCount && <div style={{ color: 'red' }}>Some fields are invalid</div>}
-        {!!submittingError && <div style={{ color: 'red' }}>{submittingError}</div>}
-        {successMessageVisible && <div style={{ color: 'green' }}>Created!</div>}
-        <button type="submit" disabled={formik.isSubmitting}>
-          {formik.isSubmitting ? 'Submitting' : 'Create Idea'}
-        </button>
+        <FormItems>
+          <Input label="Name" name="name" formik={formik} />
+          <Input label="Nick" name="nick" formik={formik} />
+          <Input label="Description" name="description" formik={formik} maxWidth={500} />
+          <Textarea name="text" label="Text" formik={formik} />
+          {!formik.isValid && !!formik.submitCount && <div style={{ color: 'red' }}>Some fields are invalid</div>}
+          {!!submittingError && <Alert color="red">{submittingError}</Alert>}
+          {successMessageVisible && <Alert color="green">Created!</Alert>}
+          <Button loading={formik.isSubmitting}>Create Idea</Button>
+        </FormItems>
       </form>
     </Segment>
   )
