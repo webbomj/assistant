@@ -16,12 +16,15 @@
   "dependencies": {
     "@assistant/backend": "workspace:*",
     "classnames": "^2.5.1",
+    "formik": "^2.4.5",
+    "formik-validator-zod": "^2.0.0",
     "include-media": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
     "reset-css": "^5.0.2",
-    "sass": "^1.70.0"
+    "sass": "^1.70.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@tanstack/react-query": "^4.35.3",

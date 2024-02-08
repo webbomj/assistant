@@ -1,14 +1,22 @@
-import { useState } from 'react'
+import { zCreateIdeaTrpcInput } from '@assistant/backend/src/router/createIdea/input'
+import { useFormik } from 'formik'
+import { withZodSchema } from 'formik-validator-zod'
 import { Input } from '../../components/Input'
 import { Segment } from '../../components/Segment'
 import { Textarea } from '../../components/Textarea'
 
 export const NewIdeaPage = () => {
-  const [state, setState] = useState({
-    name: '',
-    nick: '',
-    description: '',
-    text: '',
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      nick: '',
+      description: '',
+      text: '',
+    },
+    onSubmit: (values) => {
+      console.info('Submitted', values)
+    },
+    validate: withZodSchema(zCreateIdeaTrpcInput),
   })
 
   return (
@@ -16,13 +24,13 @@ export const NewIdeaPage = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          console.info('Submitted', state)
+          formik.handleSubmit()
         }}
       >
-        <Input label="Name" name="name" setState={setState} state={state} />
-        <Input label="Nick" name="nick" setState={setState} state={state} />
-        <Input label="Description" name="description" setState={setState} state={state} />
-        <Textarea name="text" label="Text" setState={setState} state={state} />
+        <Input label="Name" name="name" formik={formik} />
+        <Input label="Nick" name="nick" formik={formik} />
+        <Input label="Description" name="description" formik={formik} />
+        <Textarea name="text" label="Text" formik={formik} />
 
         <button type="submit">Create Idea</button>
       </form>

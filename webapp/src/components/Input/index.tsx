@@ -1,17 +1,10 @@
 import cn from 'classnames'
+import { type FormikProps } from 'formik'
 import css from './index.module.scss'
 
-export const Input = ({
-  name,
-  label,
-  state,
-  setState,
-}: {
-  name: string
-  label: string
-  state: Record<string, any>
-  setState: React.Dispatch<React.SetStateAction<any>>
-}) => {
+export const Input = ({ name, label, formik }: { name: string; label: string; formik: FormikProps<any> }) => {
+  const { values, setFieldValue } = formik
+
   return (
     <div className={cn({ [css.field]: true })}>
       <label htmlFor={name}>{label}</label>
@@ -19,9 +12,9 @@ export const Input = ({
       <input
         type="text"
         onChange={(e) => {
-          setState({ ...state, [name]: e.target.value })
+          void setFieldValue(name, e.target.value)
         }}
-        value={state[name]}
+        value={values[name]}
         name={name}
         id={name}
       />
