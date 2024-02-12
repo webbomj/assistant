@@ -1,8 +1,8 @@
 import { trpc } from '../../lib/trpc'
 import { getPasswordHash } from '../../utils/getPasswordHash'
-import { zSingInTrpcInput } from './input'
+import { zSignInTrpcInput } from './input'
 
-export const singInTrpcRoute = trpc.procedure.input(zSingInTrpcInput).mutation(async ({ input, ctx }) => {
+export const signInTrpcRoute = trpc.procedure.input(zSignInTrpcInput).mutation(async ({ input, ctx }) => {
   const user = await ctx.prisma.user.findUnique({
     where: {
       nick: input.nick,
