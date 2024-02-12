@@ -5,6 +5,7 @@ import {
   getAllIdeasRoute,
   getNewIdeaRoute,
   getSignInRoute,
+  getSignOutRoute,
   getSignUpRoute,
   getViewIdeaRoute,
   viewIdeaRouteParams,
@@ -15,6 +16,7 @@ import { ViewIdeaPage } from './pages/IdeaPage'
 import './styles/global.scss'
 import { NewIdeaPage } from './pages/NewIdeaPage'
 import { SignInPage } from './pages/SignIn'
+import { SignOutPage } from './pages/SignOutPage'
 import { SignUpPage } from './pages/SignUp'
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
     <TrpcProvider>
       <BrowserRouter>
         <Routes>
+          <Route path={getSignOutRoute()} element={<SignOutPage />}></Route>
           <Route element={<Layout />}>
             <Route path={getSignUpRoute()} element={<SignUpPage />}></Route>
             <Route path={getSignInRoute()} element={<SignInPage />}></Route>
