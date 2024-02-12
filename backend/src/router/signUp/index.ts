@@ -1,4 +1,5 @@
 import { trpc } from '../../lib/trpc'
+import { getPasswordHash } from '../../utils/getPasswordHash'
 import { zSingUpTrpcInput } from './input'
 
 export const signUpTrpcRoute = trpc.procedure.input(zSingUpTrpcInput).mutation(async ({ input, ctx }) => {
@@ -13,7 +14,10 @@ export const signUpTrpcRoute = trpc.procedure.input(zSingUpTrpcInput).mutation(a
   }
 
   await ctx.prisma.user.create({
-    data: input,
+    data: {
+      nick: input.nick,
+      password: getPasswordHash(input.password),
+    },
   })
 
   return true
