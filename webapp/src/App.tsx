@@ -6,6 +6,7 @@ import {
   editIdeaRouteParams,
   getAllIdeasRoute,
   getEditIdeaRoute,
+  getEditProfileRoute,
   getNewIdeaRoute,
   getSignInRoute,
   getSignOutRoute,
@@ -14,6 +15,7 @@ import {
   viewIdeaRouteParams,
 } from './lib/routes'
 import { TrpcProvider } from './lib/trpc'
+import { EditProfilePage } from './pages/auth/EditProfilePage'
 import { SignInPage } from './pages/auth/SignIn'
 import { SignOutPage } from './pages/auth/SignOutPage'
 import { SignUpPage } from './pages/auth/SignUp'
@@ -37,6 +39,7 @@ function App() {
               <Route path={getAllIdeasRoute()} element={<AllIdeasPage />}></Route>
               <Route path={getViewIdeaRoute(viewIdeaRouteParams)} element={<ViewIdeaPage />}></Route>
               <Route path={getNewIdeaRoute()} element={<NewIdeaPage />}></Route>
+              <Route path={getEditProfileRoute()} element={<EditProfilePage />} />
               <Route path={getEditIdeaRoute(editIdeaRouteParams)} element={<EditIdeaPage />}></Route>
               <Route path="*" element={<NotFoundPage />} />
             </Route>
