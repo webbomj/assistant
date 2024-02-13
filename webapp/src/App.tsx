@@ -14,15 +14,15 @@ import {
   viewIdeaRouteParams,
 } from './lib/routes'
 import { TrpcProvider } from './lib/trpc'
-import { AllIdeasPage } from './pages/AllIdeasPage'
-import { EditIdeaPage } from './pages/EditIdeaPage'
-import { ViewIdeaPage } from './pages/IdeaPage'
+import { SignInPage } from './pages/auth/SignIn'
+import { SignOutPage } from './pages/auth/SignOutPage'
+import { SignUpPage } from './pages/auth/SignUp'
+import { AllIdeasPage } from './pages/ideas/AllIdeasPage'
+import { EditIdeaPage } from './pages/ideas/EditIdeaPage'
+import { ViewIdeaPage } from './pages/ideas/IdeaPage'
 import './styles/global.scss'
-import { NewIdeaPage } from './pages/NewIdeaPage'
-import { NotFoundPage } from './pages/NotFoundPage'
-import { SignInPage } from './pages/SignIn'
-import { SignOutPage } from './pages/SignOutPage'
-import { SignUpPage } from './pages/SignUp'
+import { NewIdeaPage } from './pages/ideas/NewIdeaPage'
+import { NotFoundPage } from './pages/other/NotFoundPage'
 
 function App() {
   return (
