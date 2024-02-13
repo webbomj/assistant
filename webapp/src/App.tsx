@@ -19,6 +19,7 @@ import { EditIdeaPage } from './pages/EditIdeaPage'
 import { ViewIdeaPage } from './pages/IdeaPage'
 import './styles/global.scss'
 import { NewIdeaPage } from './pages/NewIdeaPage'
+import { NotFoundPage } from './pages/NotFoundPage'
 import { SignInPage } from './pages/SignIn'
 import { SignOutPage } from './pages/SignOutPage'
 import { SignUpPage } from './pages/SignUp'
@@ -37,6 +38,7 @@ function App() {
               <Route path={getViewIdeaRoute(viewIdeaRouteParams)} element={<ViewIdeaPage />}></Route>
               <Route path={getNewIdeaRoute()} element={<NewIdeaPage />}></Route>
               <Route path={getEditIdeaRoute(editIdeaRouteParams)} element={<EditIdeaPage />}></Route>
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
