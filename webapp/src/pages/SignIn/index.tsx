@@ -7,10 +7,11 @@ import { FormItems } from '../../components/FormItems'
 import { Input } from '../../components/Input'
 import { Segment } from '../../components/Segment'
 import { useForm } from '../../lib/form'
+import { withPageWrapper } from '../../lib/pageWrapper'
 import { getAllIdeasRoute } from '../../lib/routes'
 import { trpc } from '../../lib/trpc'
 
-export const SignInPage = () => {
+export const SignInPage = withPageWrapper({ redirectAuthorized: true })(() => {
   const navigate = useNavigate()
   const trpcUtils = trpc.useUtils()
   const signIn = trpc.signIn.useMutation()
@@ -41,4 +42,4 @@ export const SignInPage = () => {
       </form>
     </Segment>
   )
-}
+})
