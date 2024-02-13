@@ -2,7 +2,9 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import {
+  editIdeaRouteParams,
   getAllIdeasRoute,
+  getEditIdeaRoute,
   getNewIdeaRoute,
   getSignInRoute,
   getSignOutRoute,
@@ -12,6 +14,7 @@ import {
 } from './lib/routes'
 import { TrpcProvider } from './lib/trpc'
 import { AllIdeasPage } from './pages/AllIdeasPage'
+import { EditIdeaPage } from './pages/EditIdeaPage'
 import { ViewIdeaPage } from './pages/IdeaPage'
 import './styles/global.scss'
 import { NewIdeaPage } from './pages/NewIdeaPage'
@@ -31,6 +34,7 @@ function App() {
             <Route path={getAllIdeasRoute()} element={<AllIdeasPage />}></Route>
             <Route path={getViewIdeaRoute(viewIdeaRouteParams)} element={<ViewIdeaPage />}></Route>
             <Route path={getNewIdeaRoute()} element={<NewIdeaPage />}></Route>
+            <Route path={getEditIdeaRoute(editIdeaRouteParams)} element={<EditIdeaPage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
