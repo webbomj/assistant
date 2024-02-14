@@ -14,6 +14,7 @@ rules:
     - patterns:
         - group:
             - '@assistant/backend/**'
+            - '!@assistant/backend/src/router'
             - '!@assistant/backend/**/'
             - '!@assistant/backend/**/input'
           allowTypeImports: true
