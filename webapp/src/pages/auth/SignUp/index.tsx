@@ -12,7 +12,7 @@ import { withPageWrapper } from '../../../lib/pageWrapper'
 import { getAllIdeasRoute } from '../../../lib/routes'
 import { trpc } from '../../../lib/trpc'
 
-export const SignUpPage = withPageWrapper({ redirectAuthorized: true })(() => {
+export const SignUpPage = withPageWrapper({ redirectAuthorized: true, title: 'Sign Up' })(() => {
   const navigate = useNavigate()
   const trpcUtils = trpc.useUtils()
   const signUp = trpc.signUp.useMutation()

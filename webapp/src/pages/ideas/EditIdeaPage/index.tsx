@@ -29,6 +29,7 @@ export const EditIdeaPage = withPageWrapper({
       idea,
     }
   },
+  title: ({ idea }) => `Edit Idea "${idea.name}"`,
 })(({ idea }: { idea: NonNullable<TrpcRouterOutput['getIdea']['idea']> }) => {
   const navigate = useNavigate()
   const updateIdea = trpc.updateIdea.useMutation()
