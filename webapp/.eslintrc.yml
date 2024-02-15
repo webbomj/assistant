@@ -17,5 +17,6 @@ rules:
             - '!@assistant/backend/src/router'
             - '!@assistant/backend/**/'
             - '!@assistant/backend/**/input'
+            - '!@assistant/backend/src/utils/can'
           allowTypeImports: true
           message: 'Only types and input schemas are allowed to be imported from backend workspace'

@@ -1,5 +1,6 @@
 import type { TrpcRouterOutput } from '@assistant/backend/src/router'
 import { zUpdateIdeaTrpcInput } from '@assistant/backend/src/router/ideas/updateIdea/input'
+import { canEditIdea } from '@assistant/backend/src/utils/can'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Alert } from '../../../components/Alert'
 import { Button } from '../../../components/Button'
@@ -23,6 +24,7 @@ export const EditIdeaPage = withPageWrapper({
   setProps: ({ queryResult, ctx, checkExists, checkAccess }) => {
     const idea = checkExists(queryResult.data.idea, 'Idea not found')
     checkAccess(ctx.me?.id === idea.authorId, 'An idea can only be edited by the author')
+    checkAccess(canEditIdea(ctx.me, idea), 'An idea can only be edited by the author')
     return {
       idea,
     }
