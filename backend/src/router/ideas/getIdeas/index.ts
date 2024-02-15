@@ -1,14 +1,20 @@
+import * as _ from 'lodash'
 import { trpc } from '../../../lib/trpc'
 import { zGetIdeasTrpcInput } from './input'
 
 export const getIdeasTrpcRoute = trpc.procedure.input(zGetIdeasTrpcInput).query(async ({ ctx, input }) => {
-  const ideas = await ctx.prisma.idea.findMany({
+  const rawIdeas = await ctx.prisma.idea.findMany({
     select: {
       id: true,
       nick: true,
       name: true,
       description: true,
       serialNumber: true,
+      _count: {
+        select: {
+          IdeaLike: true,
+        },
+      },
     },
     orderBy: [
       {
@@ -22,9 +28,13 @@ export const getIdeasTrpcRoute = trpc.procedure.input(zGetIdeasTrpcInput).query(
     take: input.limit + 1,
   })
 
-  const nextIdea = ideas.at(input.limit)
+  const nextIdea = rawIdeas.at(input.limit)
   const nextCursor = nextIdea?.serialNumber
-  const ideasExceptNext = ideas.slice(0, input.limit)
+  const rawIdeasExceptNext = rawIdeas.slice(0, input.limit)
+  const ideasExceptNext = rawIdeasExceptNext.map((idea) => ({
+    ..._.omit(idea, ['_count']),
+    likesCount: idea._count.IdeaLike,
+  }))
 
   return { ideas: ideasExceptNext, nextCursor }
 })
